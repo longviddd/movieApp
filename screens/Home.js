@@ -1,6 +1,6 @@
 import { react } from '@babel/types';
 import React, {useEffect, useState} from 'react';
-import { Text, View, StyleSheet, Dimensions, FlatList} from 'react-native';
+import { Text, View, StyleSheet, Dimensions, ScrollView} from 'react-native';
 import {SliderBox} from "react-native-image-slider-box";
 import { getPopularMovies, getUpcomingMovies } from '../services/service';
 //to import a pure component you don't need brackets around the name. For other components, you need the bracket.
@@ -8,7 +8,6 @@ import List from '../components/List';
 const dimensions = Dimensions.get('screen');
 //using the dimension library of react native to get the screen size in order to make responsive interface
 const Home = () => {
-    console.log(dimensions.height);
     //useState is used to update variable since react loads every components at the beginning. 
     //for this example, you use setMovie to change the variable movie everytime you need it. In this case, after the async function, you will use setMovie to change the value of movie and the change will be reflected in the view.
     //You also have to use useEffect to avoid infinite loop from the useState. you can also add how often you want useEffect to run with the second parameter. an empty array would only run one time, 1000 would run every second
@@ -37,16 +36,19 @@ const Home = () => {
         });
     }, [])
     //in the return, you can't put two different components. Therefore, if you have more than one view, you have to put it in the container element
+    //in order for your app to have many elements and is scroll-able, you have to add scrollview from the react-native library.
     return (
         <React.Fragment>
-            <View
-            style={styles.sliderContainer}>
-            <SliderBox images={movieImages} autoplay ={true} circleLoop={true} sliderBoxHeight = {dimensions.height / 1.5} dotStyle={styles.sliderStyle}/>
-            {error && <Text style={{color: 'red'}}>Error in the server</Text>}
-            </View>
-            <View style={styles.carousel}>
-                <List content={popularMovies} title="Popular Movies"></List>
-            </View>
+            <ScrollView>
+                <View
+                style={styles.sliderContainer}>
+                <SliderBox images={movieImages} autoplay ={true} circleLoop={true} sliderBoxHeight = {dimensions.height / 1.5} dotStyle={styles.sliderStyle}/>
+                {error && <Text style={{color: 'red'}}>Error in the server</Text>}
+                </View>
+                <View style={styles.carousel}>
+                    <List content={popularMovies} title="Popular Movies"></List>
+                </View>
+            </ScrollView>
         </React.Fragment>
         
     );

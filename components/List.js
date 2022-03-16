@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 
 const propTypes = {
-    title: PropTypes.object,
+    title: PropTypes.string,
     content: PropTypes.object
 }
 class List extends React.PureComponent {

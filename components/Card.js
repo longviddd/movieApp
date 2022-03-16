@@ -3,6 +3,7 @@ import { StyleSheet, TouchableOpacity, Image, Text} from 'react-native';
 import PropTypes from 'prop-types';
 const placeholderImage = require('../assets/images/placeholder.png')
 
+//PropTypes are a mechanism to ensure that components use the correct data type and pass the right data, and that components use the right type of props, and that receiving components receive the right type ofdata
 const propTypes = {
     item: PropTypes.object,
 }
