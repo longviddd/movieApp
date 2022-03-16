@@ -47,9 +47,6 @@ const Home = () => {
             <View style={styles.carousel}>
                 <List content={popularMovies} title="Popular Movies"></List>
             </View>
-            <View style={styles.carousel}>
-                <List content={popularMovies} title="Popular movies list"></List>
-            </View>
         </React.Fragment>
         
     );
