@@ -1,6 +1,11 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Image, Text} from 'react-native';
+import PropTypes from 'prop-types';
 const placeholderImage = require('../assets/images/placeholder.png')
+
+const propTypes = {
+    item: PropTypes.object,
+}
 class Card extends React.PureComponent {
     
     render() {
@@ -35,4 +40,5 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     }
 })
+Card.propTypes = propTypes
 export default Card;
